@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d93e4c748a9687e4ca4cd0af09ba780f
+timeCreated: 1498641769
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nanum Pen Script
+  fontNames:
+  - Nanum Pen Script
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiltyLife(7.14)_게임구현_조건이벤트까지.CSharp", "GuiltyLife(7.14)_게임구현_조건이벤트까지.CSharp.csproj", "{ABECEAB0-CCAF-781F-5319-BE53059BA871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiltyLife(7.14)_게임구현_조건이벤트까지.CSharp.Editor", "GuiltyLife(7.14)_게임구현_조건이벤트까지.CSharp.Editor.csproj", "{0459BF4E-8814-6D28-8CEA-EDDC87228185}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABECEAB0-CCAF-781F-5319-BE53059BA871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABECEAB0-CCAF-781F-5319-BE53059BA871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABECEAB0-CCAF-781F-5319-BE53059BA871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABECEAB0-CCAF-781F-5319-BE53059BA871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0459BF4E-8814-6D28-8CEA-EDDC87228185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0459BF4E-8814-6D28-8CEA-EDDC87228185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0459BF4E-8814-6D28-8CEA-EDDC87228185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0459BF4E-8814-6D28-8CEA-EDDC87228185}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

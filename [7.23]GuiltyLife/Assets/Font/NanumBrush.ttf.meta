@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3673077b9338b8f44a18db821431fbaa
+timeCreated: 1498651557
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nanum Brush Script
+  fontNames:
+  - Nanum Brush Script
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
