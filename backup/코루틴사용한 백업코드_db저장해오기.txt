@@ -1,0 +1,97 @@
+코루틴 적용시킨 백업 코드.
+하지만 귀찮으니까 코루틴 빼도 되나 테스트할거야!
+
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Mono.Data.SqliteClient;
+using System.IO;        //파일 parsing 위해서 필요
+using System.Data;
+
+/*
+    Db에서 parsing해서, Schedule 변수에 저장
+    이 클래스를 사용할지는 모르겠는데 일단 테스트용
+    
+    ※ 현재 문제점
+       LoadSaveManager의 Start()호출 이전에,  이뉴머레이터들을 한번씩 수행하는 듯. 왜지??
+
+*/
+
+public class LoadSaveManager : MonoBehaviour
+{
+    public List<Schedule> ScheduleList = new List<Schedule>();
+
+
+
+    // 파싱을 우선 하고, 다른 작업을 수행하기 위해 사용해봤음ㅋㅋ
+    IEnumerator ScheduleDbParsing(string p)
+    {
+        Debug.Log("parsing...");
+        string filePath = Application.persistentDataPath + "/" + p;
+
+        if (!File.Exists(filePath))
+        {
+            Debug.LogWarning("File \"" + filePath + "\"does not exist. Attempting to create from \"" + Application.dataPath + "!/assets/" + p);
+
+            WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/" + p);
+            while (!loadDB.isDone) { }
+            File.WriteAllBytes(filePath, loadDB.bytes);
+        }
+
+        string connectionString = "URI=file:" + filePath;
+
+        ScheduleList.Clear();
+
+        //using 써서, 비정상적 예외 발생해도 파일이 닫힘
+        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        {
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())  // EnterSqL에 명령 할 수 있다. 
+            {
+                //명령어 전달
+                string sqlQuery = "SELECT * FROM schedule";     //schedule은 일정 저장 table명
+                dbCmd.CommandText = sqlQuery;
+
+                using (IDataReader reader = dbCmd.ExecuteReader()) // 테이블에 있는 데이터들이 들어간다. 
+                {
+                    while (reader.Read())
+                    {
+                        //생성자 통해서 읽어온 값 add해줌
+                        ScheduleList.Add(new Schedule(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetBoolean(3), reader.GetBoolean(4)));
+                    }
+
+                    //디버그
+                    for (int i = 0; i < ScheduleList.Count; i++)
+                    {
+                        Debug.Log(i+"째 data : " + ScheduleList[i].print());
+                    }
+
+                    dbConnection.Close();
+                    reader.Close();
+                }
+            }
+        }
+
+
+
+        yield return null;
+    }
+
+    IEnumerator Main()
+    {
+        Debug.Log("Main");
+        yield return StartCoroutine(ScheduleDbParsing("scheduler.sqlite"));
+        yield return null;
+    }
+
+
+    void Start()
+    {
+        Debug.Log("LoadSaveManager started");
+        StartCoroutine(Main());
+    }
+
+}
